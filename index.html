@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Monitoring Surat Paksa - Coretax</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- html2canvas Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 Dashboard Monitoring Surat Paksa</h1>
+        <p>Sistem Coretax</p>
+    </div>
+
+    <div class="dashboard">
+        <!-- Statistics Cards -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <h3>Total Surat Paksa</h3>
+                <div class="value">2,847</div>
+                <div class="label">Aktif (SIDJP + Coretax)</div>
+                <span class="priority-badge badge-warning">Perlu Perhatian</span>
+            </div>
+            <div class="stat-card">
+                <h3>Tunggakan</h3>
+                <div class="value">Rp 45.2 M</div>
+                <div class="label">Total Outstanding</div>
+                <span class="priority-badge badge-critical">Prioritas Tinggi</span>
+            </div>
+            <div class="stat-card">
+                <h3>Status Sinkronisasi</h3>
+                <div class="value">87.5%</div>
+                <div class="label">Data Termigrasi</div>
+                <span class="priority-badge badge-safe">On Track</span>
+            </div>
+            <div class="stat-card">
+                <h3>Mendekati Daluwarsa</h3>
+                <div class="value">143</div>
+                <div class="label">< 6 Bulan (Kritis)</div>
+                <span class="priority-badge badge-critical">Urgent</span>
+            </div>
+        </div>
+
+        <!-- Alert Section -->
+        <div class="alert-section">
+            <h2>⚠️ Peringatan Prioritas Tinggi</h2>
+            <div class="alert-item">
+                <div>
+                    <strong>PT Indo Jaya Sejahtera</strong> - SP/2019/0342<br>
+                    <small>Tunggakan: Rp 2.4M | Terbit: 15 Jan 2020</small>
+                </div>
+                <div class="countdown">127 hari</div>
+            </div>
+            <div class="alert-item">
+                <div>
+                    <strong>CV Maju Bersama</strong> - SP/2019/1205<br>
+                    <small>Tunggakan: Rp 1.8M | Terbit: 3 Mar 2020</small>
+                </div>
+                <div class="countdown">98 hari</div>
+            </div>
+            <div class="alert-item">
+                <div>
+                    <strong>PT Sukses Mandiri</strong> - SP/2020/0089<br>
+                    <small>Tunggakan: Rp 3.2M | Terbit: 22 Apr 2020</small>
+                </div>
+                <div class="countdown">156 hari</div>
+            </div>
+        </div>
+
+        <!-- Charts Row 1 -->
+        <div class="chart-row">
+            <div class="chart-container">
+                <h2>📈 Tren Penerbitan Surat Paksa (SIDJP vs Coretax)</h2>
+                <div class="chart-wrapper">
+                    <canvas id="lineChart"></canvas>
+                </div>
+                <div style="margin-top: 15px;">
+                    <span class="legend-item">
+                        <div class="legend-color" style="background: #3b82f6;"></div>
+                        SIDJP (Legacy)
+                    </span>
+                    <span class="legend-item">
+                        <div class="legend-color" style="background: #10b981;"></div>
+                        Coretax (New)
+                    </span>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h2>🎯 Distribusi Status Surat Paksa</h2>
+                <div class="chart-wrapper">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row 2 -->
+        <div class="chart-row">
+            <div class="chart-container">
+                <h2>📊 Tunggakan Per Tahun Penerbitan</h2>
+                <div class="chart-wrapper">
+                    <canvas id="barChart"></canvas>
+                </div>
+                <div style="margin-top: 15px;">
+                    <span class="legend-item">
+                        <div class="legend-color" style="background: #ef4444;"></div>
+                        Kritis (< 6 bulan)
+                    </span>
+                    <span class="legend-item">
+                        <div class="legend-color" style="background: #3b82f6;"></div>
+                        Aman
+                    </span>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h2>⚡ Pencapaian Target Penagihan</h2>
+                <div class="chart-wrapper">
+                    <canvas id="gaugeChart"></canvas>
+                </div>
+                <div style="text-align: center; margin-top: 15px; font-size: 1.2em;">
+                    <strong style="color: #10b981;">72.5%</strong> dari target Rp 62.3M
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <h3>Kelas F PT PD II</h3>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
